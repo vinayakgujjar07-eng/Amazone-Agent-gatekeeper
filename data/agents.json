@@ -1,0 +1,26 @@
+[
+  {
+    "agent_id": "AGT-001",
+    "customer_name": "Rahul Verma",
+    "permission_level": "Full shopping",
+    "status": "Active",
+    "registered_at": "2026-11-01 09:00:00",
+    "revoked_at": ""
+  },
+  {
+    "agent_id": "AGT-002",
+    "customer_name": "Rahul Verma",
+    "permission_level": "Full shopping",
+    "status": "Revoked",
+    "registered_at": "2026-11-01 09:05:00",
+    "revoked_at": "2026-11-10 18:30:00"
+  },
+  {
+    "agent_id": "AGT-003",
+    "customer_name": "Priya Sharma",
+    "permission_level": "Read-only",
+    "status": "Active",
+    "registered_at": "2026-11-02 11:15:00",
+    "revoked_at": ""
+  }
+]

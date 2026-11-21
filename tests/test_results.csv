@@ -1,0 +1,7 @@
+﻿Test,Scenario,Input,Expected,Actual,Result,Explanation
+1,Registered agent checks product prices,AGT-001 | View product prices | Wireless Earbuds | Rs. 0,ALLOW (Rule 4),ALLOW (Rule 4),PASS,"Read-only action by a registered, active agent. No money is involved."
+2,Unknown agent tries to place an order,"AGT-999 | Place an order | Wireless Earbuds | Rs. 2,000",BLOCK (Rule 1),BLOCK (Rule 1),PASS,Agent ID 'AGT-999' is not registered. Unknown agents are always blocked.
+3,"Registered agent tries to buy a Rs. 10,000 product (limit Rs. 5,000)","AGT-001 | Place an order | Smartphone | Rs. 10,000",ASK CUSTOMER (Rule 6),ASK CUSTOMER (Rule 6),PASS,"₹10,000 is above the ₹5,000 spending limit. Customer confirmation is required."
+4,"Registered agent tries to buy a Rs. 2,000 product","AGT-001 | Place an order | Wireless Earbuds | Rs. 2,000",ALLOW (Rule 5),ALLOW (Rule 5),PASS,"₹2,000 is within the ₹5,000 spending limit."
+5,Revoked agent tries to place an order,"AGT-002 | Place an order | Wireless Earbuds | Rs. 2,000",BLOCK (Rule 2),BLOCK (Rule 2),PASS,Agent AGT-002 is revoked. Revoked agents are always blocked.
+6,"Registered agent requests a Rs. 8,000 refund","AGT-001 | Request a refund | Smart Watch | Rs. 8,000",ASK CUSTOMER (Rule 6),ASK CUSTOMER (Rule 6),PASS,"₹8,000 is above the ₹5,000 spending limit. Customer confirmation is required."
