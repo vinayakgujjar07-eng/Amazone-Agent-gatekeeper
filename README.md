@@ -4,11 +4,11 @@
 
 Agentic AI assignment · Category: **Online Store** · Reference company: Amazon
 
-> \\\*\\\*Important:\\\*\\\* This is an independent academic prototype inspired by online shopping platforms.
-> It is \\\*\\\*not\\\*\\\* connected to Amazon, and Amazon has not implemented, approved, or partnered with it.
-> All customers, agents, products and prices are simulated. No real account, payment or personal data is used.
+Important: This is an independent academic prototype inspired by online shopping platforms.
+It is not connected to Amazon, and Amazon has not implemented, approved, or partnered with it.
+All customers, agents, products and prices are simulated. No real account, payment or personal data is used.
 
-\---
+
 
 ## What it does
 
@@ -50,20 +50,17 @@ The engine stops at the **first** rule that applies. Rules 1 and 2 come first, s
 
 ```
    python -m venv venv
-   venv\\\\Scripts\\\\activate
+   venv Scripts activate
    ```
 
 4. Install the requirements:
 
-```
+
    pip install -r requirements.txt
-   ```
+   
 
-5. Start the app:
-
-```
-   streamlit run app.py
-   ```
+5. Start the app: streamlit run app.py
+   
 
 Your browser opens at http://localhost:8501 . (If asked for an email by Streamlit, just press Enter.)
 
@@ -71,18 +68,18 @@ Your browser opens at http://localhost:8501 . (If asked for an email by Streamli
 
 ### Run the tests
 
-```
-python tests/test\\\_gatekeeper.py
-```
 
-This prints the six required test cases with the actual result of each, saves `tests/test\\\_results.csv`,
+python tests/test gatekeeper.py
+
+
+This prints the six required test cases with the actual result of each, saves `tests/test\\\\\\\_results.csv`,
 and then runs the extra automated tests. The tests use temporary files and do not change your real data.
 
 ### Rebuild the two-page report (optional)
 
 ```
 pip install reportlab pypdf
-python report/build\\\_report.py --github https://github.com/YOUR-NAME/AgentGate --enrollment YOUR-NUMBER
+python report/build\\\\\\\_report.py --github https://github.com/YOUR-NAME/AgentGate --enrollment YOUR-NUMBER
 ```
 
 \---
@@ -92,34 +89,34 @@ python report/build\\\_report.py --github https://github.com/YOUR-NAME/AgentGate
 ```
 AgentGate/
 ├── app.py               Streamlit user interface (all sections A–H + test results page)
-├── decision\\\_engine.py   The 8 rules and evaluate\\\_request()  <- the "brain"
-├── agent\\\_manager.py     Register / revoke agents (data/agents.json)
-├── audit\\\_logger.py      Audit log (data/audit\\\_log.csv) and summary counts
-├── pending\\\_manager.py   Requests waiting for customer confirmation
-├── test\\\_cases.py        The six required test cases (run on the real engine)
+├── decision\\\\\\\_engine.py   The 8 rules and evaluate\\\\\\\_request()  <- the "brain"
+├── agent\\\\\\\_manager.py     Register / revoke agents (data/agents.json)
+├── audit\\\\\\\_logger.py      Audit log (data/audit\\\\\\\_log.csv) and summary counts
+├── pending\\\\\\\_manager.py   Requests waiting for customer confirmation
+├── test\\\\\\\_cases.py        The six required test cases (run on the real engine)
 ├── requirements.txt
 ├── README.md
 ├── PROMPTS.md
 ├── data/
 │   ├── agents.json      Demo agents (simulated)
-│   └── audit\\\_log.csv    Audit log
+│   └── audit\\\\\\\_log.csv    Audit log
 ├── tests/
-│   ├── test\\\_gatekeeper.py
-│   └── test\\\_results.csv Created when you run the tests
+│   ├── test\\\\\\\_gatekeeper.py
+│   └── test\\\\\\\_results.csv Created when you run the tests
 ├── screenshots/         Your screenshots (you capture these)
 ├── report/
 │   ├── Report.pdf       Two-page academic report
-│   └── build\\\_report.py
+│   └── build\\\\\\\_report.py
 └── video/               Your demo video or its link
 ```
 
 ## How the code works (for your live demo)
 
-1. **`app.py`** collects the request in the *Shopping Request Simulator* and calls `process\\\_request()`.
-2. `process\\\_request()` calls **`evaluate\\\_request()`** in `decision\\\_engine.py`.
-3. `evaluate\\\_request()` looks up the agent and goes through the rules in order (Rule 1, 2, 3 → block; Rule 4 → allow read-only; Rule 5 → allow within limit; Rule 6 → ask customer).
-4. The result is written to the audit log by **`audit\\\_logger.log\\\_event()`** (Rule 8).
-5. If the answer is **ASK CUSTOMER**, the request is saved in `data/pending\\\_requests.json`.
+1. **`app.py`** collects the request in the *Shopping Request Simulator* and calls `process\\\\\\\_request()`.
+2. `process\\\\\\\_request()` calls **`evaluate\\\\\\\_request()`** in `decision\\\\\\\_engine.py`.
+3. `evaluate\\\\\\\_request()` looks up the agent and goes through the rules in order (Rule 1, 2, 3 → block; Rule 4 → allow read-only; Rule 5 → allow within limit; Rule 6 → ask customer).
+4. The result is written to the audit log by **`audit\\\\\\\_logger.log\\\\\\\_event()`** (Rule 8).
+5. If the answer is **ASK CUSTOMER**, the request is saved in `data/pending\\\\\\\_requests.json`.
 6. On the *Customer Confirmation* page the customer clicks **Confirm** or **Reject**. The engine runs again with that answer (Rule 7). If the agent was revoked while waiting, it is blocked (Rule 2), even if the customer clicked Confirm.
 7. The audit log keeps **both** rows (the ASK CUSTOMER row and the final row) with the same Request ID, so history is never overwritten.
 
@@ -134,6 +131,4 @@ AgentGate/
 
 Simulated data only; no real identity verification (anyone can type an agent ID); one global limit;
 JSON/CSV files instead of a secure database; the confirmation screen is a simple button, not real customer authentication.
-
-
 
